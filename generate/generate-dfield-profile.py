@@ -16,7 +16,7 @@ widths = np.arange(0.010, 0.400, 0.1)
 # to a list 'a'. The results related to allowed bands are given
 # in a output line marked with kvals flag. 
 for i in widths: 
-    cmd = "mpb  W="+str(i)+" l=1.550 LY=22 resolution=32 ../waveguide/wg_1D_slab_neff.ctl | grep kvals"
+    cmd = "mpb  W="+str(i)+" l=1.550 LY=22 resolution=32 ../waveguide/wg_1D_slab.ctl | grep kvals"
     a.append(os.popen(cmd).read())
     
 a = np.genfromtxt(a, delimiter=",") # convert 'a' in a array

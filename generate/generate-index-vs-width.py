@@ -12,12 +12,14 @@ a = []
 widths = np.arange(0.120, 0.230, 0.1)
 print widths
 
+mpb_in_wg_dim = {'one':'wg_1D_slab.ctl' , 'two':'wg_2D_strip.ctl' }
+
 #########################################################
-# Runs mpb for several slab's widths and append the results
+# Runs mpb for several waveguide's widths and append the results
 # to a list 'a'. The results related to allowed bands are given
 # in a output line marked with kvals flag. 
 for i in widths: 
-    cmd = "mpb  W="+str(i)+" l=1.550 LY=40 resolution=64 ../waveguide/wg_1D_slab_neff.ctl | grep kvals"
+    cmd = "mpb  W="+str(i)+" l=1.550 LY=20 LZ=20 resolution=32 ../waveguide/"+mpb_in_wg_dim['two']+" | grep kvals"
     a.append(os.popen(cmd).read())
     
 a = np.genfromtxt(a, delimiter=",") # convert 'a' in a array
